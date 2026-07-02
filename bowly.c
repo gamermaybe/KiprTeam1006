@@ -24,7 +24,7 @@ int main()
     clear_motor_position_counter(LEFT);
     while (get_motor_position_counter(0) < 9000) {
 		motor(LEFT,90);
-        motor(RIGHT,89);
+        motor(RIGHT,88);
     }
     clear_motor_position_counter(RIGHT);
     clear_motor_position_counter(LEFT);
@@ -42,7 +42,7 @@ int main()
     clear_motor_position_counter(RIGHT);
     clear_motor_position_counter(LEFT);
     while (get_motor_position_counter(0) > -5000) {
-		motor(LEFT,-87);
+		motor(LEFT,-88);
         motor(RIGHT,-90);
     }
     //push block off platform
@@ -55,7 +55,7 @@ int main()
     clear_motor_position_counter(RIGHT);
     clear_motor_position_counter(LEFT);
     while (get_motor_position_counter(0) < 5000) {
-		motor(LEFT,91);
+		motor(LEFT,90);
         motor(RIGHT,88);
     }
     //go back again
