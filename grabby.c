@@ -13,29 +13,6 @@ int open = 1333;
 int LEFT = 3;
 int RIGHT = 0;
 
-//Slow Servo Function
-/* void slow_servo(int port, int target_pos, int delay_ms, int step_size) {
-    int current_pos = get_servo_position(port);
-
-while (current_pos != target_pos) {
-    if (current_pos < target_pos) {
-        current_pos += step_size;
-        // Prevent overshooting the target position
-        if (current_pos > target_pos) {
-            current_pos = target pos;
-        } else {
-            current_pos -= step_size;
-        	// Prevent undershooting the target position
-       	 	if (current_pos < target_pos) {
-        		current_pos = target_pos;
-        	}
-    	}        
-        set_servo_position(port, current_pos);
-        msleep(delay_ms); //Delay between increments
-	}        
-} 
-*/
-
 int main()
 {
     
