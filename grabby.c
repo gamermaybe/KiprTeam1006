@@ -1,212 +1,84 @@
 #include <kipr/wombat.h>
 
-int ARM = 0;
-int CLAW = 1;
-
-int up = 0;
-int down = 564;
-int barely_down = 300;
-int very_down = 800;
-int closed = 2047;
-int open = 1333;
-
 int LEFT = 3;
 int RIGHT = 0;
+int ARM = 0;
+
+int UP = 1024;
+int RELEASE = 40;
 
 int main()
 {
-    
+    wait_for_light (0);
+    //arm up
     enable_servos();
-    
-    set_servo_position(CLAW,closed);
-    set_servo_position(ARM,up);
+    set_servo_position(ARM, UP);
     msleep(500);
-	slow_servo(0,1500,20,10);
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    //backup and square up
-    while (get_motor_position_counter(LEFT) < 1200) {
-		motor(LEFT,40);
-        motor(RIGHT,-40);
-    }
-    ao();
-    
-    set_servo_position(CLAW,closed);
-    set_servo_position(ARM,up);
-    msleep(500);
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    //pivot right and knock down color squares
-    while(get_motor_position_counter(LEFT) > -1800) {
-    	motor(LEFT,-100);
-        motor(RIGHT,-5);
-    }
-   
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-   //backup straight from boxes      
-    while (get_motor_position_counter(LEFT) < 800) {
-		motor(LEFT,55);
-        motor(RIGHT,-40);
-     }
-   
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    ao();
-    
-    set_servo_position(CLAW,open);
-    msleep(500);
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    //pivot to face yellow boxes
-    while (get_motor_position_counter(LEFT) < 850) {
-		motor(LEFT,98);
-        motor(RIGHT,100);
-    }
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    //backup and square up
-    while (get_motor_position_counter(LEFT) < 600) {
-		motor(LEFT,40);
-        motor(RIGHT,-40);
-    }
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    //approach yellow boxes
-    while (get_motor_position_counter(LEFT) > -1600) {
-		motor(LEFT,-100);
-        motor(RIGHT,100);
-    }
-    
-    ao();
-        
-    set_servo_position(ARM,down);
-    msleep(1000);
-    set_servo_position(CLAW,closed);
-    msleep(1000);
-    set_servo_position(ARM,up);
-    msleep(500);
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    while (get_motor_position_counter(LEFT) > -1344) {
-		motor(LEFT,-38);
-        motor(RIGHT,40);
-    }
-    ao();
-    
-    msleep(500);
-    set_servo_position(CLAW,open);
-    msleep(500);
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    while(get_motor_position_counter(LEFT) > -2000) { 
-    	motor(LEFT,-100);
-        motor(RIGHT,-100);
-    }
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    set_servo_position(ARM,very_down);
-    msleep(500);
-    
-    while(get_motor_position_counter(RIGHT) < 5) {
-    	motor(RIGHT, 75);
-        motor(LEFT, -75);
-    }
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    while(get_motor_position_counter(RIGHT) < 6000) {
-    	motor(RIGHT, 80);
-        motor(LEFT, 100);
-    }
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    while (digital (0) == 0 && digital (1) == 0){
-    	motor(LEFT,-60);
-        motor(RIGHT,-60);
-    }
-    while ((digital (0) == 0 && digital (1) == 1) || (digital (0) == 1 && digital (1) == 0)){
-    	motor(LEFT, -40);
-        motor(RIGHT, -40);
-    }
+    //push poms down ramp
     enable_servos();
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    set_servo_position(ARM,very_down);
-    msleep(500);
-    set_servo_position(CLAW,open);
+    set_servo_position(ARM, RELEASE);
     msleep(500);
     
-    while (get_motor_position_counter(LEFT) < 6500) {
-		motor(LEFT, 73);
-        motor(RIGHT, 75);
+    clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) < 9000) {
+		motor(LEFT,91);
+        motor(RIGHT,89);
     }
-    ao();
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    while (get_motor_position_counter(LEFT) < 750) {
-		motor(LEFT, 100);
-        motor(RIGHT, -100);
+    clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) < 5000) {
+		motor(LEFT,90);
+        motor(RIGHT,80);
     }
-    ao();
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    while (get_motor_position_counter(RIGHT) > -850) {
-		motor(LEFT, -100);
-        motor(RIGHT, -100);
+    //go back up
+    clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) > -10000) {
+		motor(LEFT,-90);
+        motor(RIGHT,-80);
     }
-    ao();
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    while (get_motor_position_counter(RIGHT) < 850) {
-		motor(LEFT, -100);
-        motor(RIGHT, 100);
+    clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) > -5000) {
+		motor(LEFT,-87);
+        motor(RIGHT,-88);
     }
-    ao();
-    
-    while (get_motor_position_counter(LEFT) < 850) {
-		motor(LEFT, 75);
-        motor(RIGHT, 75);
+    //push block off platform
+    clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) < 4000) {
+		motor(LEFT,92);
+        motor(RIGHT,88);
     }
-    ao();
-    
-    set_servo_position(CLAW,closed);
-    msleep(500);
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
-    while (get_motor_position_counter(LEFT) < 850) {
-		motor(LEFT, 75);
-        motor(RIGHT, -75);
+    clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) < 5000) {
+		motor(LEFT,92);
+        motor(RIGHT,87);
     }
-    ao();
+
+    //go back again
+    clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) > -8000) {
+		motor(LEFT,-89);
+        motor(RIGHT,-89);
+    }
+    /*
+    //Go down
+     clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) < 12000) {
+		motor(LEFT,95);
+        motor(RIGHT,93);
+    }
+   clear_motor_position_counter(RIGHT);
+    clear_motor_position_counter(LEFT);
+    while (get_motor_position_counter(0) < 5000) {
+		motor(LEFT,100);
+        motor(RIGHT,70);
+    } */
 }
+
 
