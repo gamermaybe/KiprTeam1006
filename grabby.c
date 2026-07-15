@@ -18,7 +18,7 @@ int main()
     enable_servos();
     set_servo_position(ARM, RELEASE);
     msleep(500);
-    
+    ao();
     clear_motor_position_counter(RIGHT);
     clear_motor_position_counter(LEFT);
     while (get_motor_position_counter(0) < 9000) {
