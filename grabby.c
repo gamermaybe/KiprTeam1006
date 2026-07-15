@@ -105,9 +105,9 @@ int main()
     
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
-    
-    while (get_motor_position_counter(LEFT) > -1344) {
-		motor(LEFT,-38);
+    // goes left
+    while (get_motor_position_counter(LEFT) > -1400) {
+		motor(LEFT,-40);
         motor(RIGHT,40);
     }
     
@@ -122,7 +122,7 @@ int main()
     
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
-    
+    // goes back
     while(get_motor_position_counter(LEFT) > -2000) { 
     	motor(LEFT,-100);
         motor(RIGHT,-100);
@@ -138,7 +138,7 @@ int main()
     
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
-    
+    // goes left
     while(get_motor_position_counter(RIGHT) < 10) {
     	motor(RIGHT, 75);
         motor(LEFT, -75);
@@ -146,7 +146,7 @@ int main()
     
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
-    
+    // goes foward while slowly going left 
     while(get_motor_position_counter(RIGHT) < 6000) {
     	motor(RIGHT, 80);
         motor(LEFT, 100);
@@ -155,16 +155,17 @@ int main()
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     
+    // goes backward while waiting for one of the buttons on the back to get pressed
     while (digital (0) == 0 && digital (1) == 0){
-    	motor(LEFT,-60);
-        motor(RIGHT,-60);
+    	motor(LEFT,-100);
+        motor(RIGHT,-100);
     }
     while ((digital (0) == 0 && digital (1) == 1) || (digital (0) == 1 && digital (1) == 0)){
-    	motor(LEFT, -60);
-        motor(RIGHT, -60);
+    	motor(LEFT, -100);
+        motor(RIGHT, -100);
     }
     
-    // Goes very down
+    // arm goes very down and claw opens to help with poms getting stuck
     enable_servos();
     set_servo_position(ARM,very_down);
     msleep(500);
@@ -173,9 +174,9 @@ int main()
     
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
-    
+    // foward 
     while (get_motor_position_counter(LEFT) < 6500) {
-		motor(LEFT, 73);
+		motor(LEFT, 75);
         motor(RIGHT, 75);
     }
     
