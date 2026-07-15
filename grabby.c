@@ -12,16 +12,18 @@ int open = 1333;
 
 int LEFT = 3;
 int RIGHT = 0;
+ 
 
 int main()
 {
+    wait_for_light (0);
     
     enable_servos();
     
     set_servo_position(CLAW,closed);
     set_servo_position(ARM,up);
     msleep(500);
-	slow_servo(0,1500,20,10);
+  
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     
@@ -32,13 +34,13 @@ int main()
     }
     ao();
     
-    set_servo_position(CLAW,closed);
-    set_servo_position(ARM,up);
-    msleep(500);
-    
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     
+    set_servo_position(CLAW,closed);
+    set_servo_position(ARM,up);
+    msleep(500);
+
     //pivot right and knock down color squares
     while(get_motor_position_counter(LEFT) > -1800) {
     	motor(LEFT,-100);
@@ -49,7 +51,7 @@ int main()
     clear_motor_position_counter(3);
     
    //backup straight from boxes      
-    while (get_motor_position_counter(LEFT) < 800) {
+    while (get_motor_position_counter(LEFT) < 1200) {
 		motor(LEFT,55);
         motor(RIGHT,-40);
      }
@@ -66,7 +68,7 @@ int main()
     clear_motor_position_counter(3);
     
     //pivot to face yellow boxes
-    while (get_motor_position_counter(LEFT) < 850) {
+    while (get_motor_position_counter(LEFT) < 1000) {
 		motor(LEFT,98);
         motor(RIGHT,100);
     }
@@ -89,6 +91,9 @@ int main()
         motor(RIGHT,100);
     }
     
+    clear_motor_position_counter(0);
+    clear_motor_position_counter(3);
+    
     ao();
         
     set_servo_position(ARM,down);
@@ -105,6 +110,10 @@ int main()
 		motor(LEFT,-38);
         motor(RIGHT,40);
     }
+    
+    clear_motor_position_counter(0);
+    clear_motor_position_counter(3);
+    
     ao();
     
     msleep(500);
@@ -124,6 +133,9 @@ int main()
     
     set_servo_position(ARM,very_down);
     msleep(500);
+    
+    clear_motor_position_counter(0);
+    clear_motor_position_counter(3);
     
     while(get_motor_position_counter(RIGHT) < 5) {
     	motor(RIGHT, 75);
@@ -146,24 +158,26 @@ int main()
         motor(RIGHT,-60);
     }
     while ((digital (0) == 0 && digital (1) == 1) || (digital (0) == 1 && digital (1) == 0)){
-    	motor(LEFT, -40);
-        motor(RIGHT, -40);
+    	motor(LEFT, -60);
+        motor(RIGHT, -60);
     }
+    
+    
     enable_servos();
-    
-    clear_motor_position_counter(0);
-    clear_motor_position_counter(3);
-    
+    // Goes very down
     set_servo_position(ARM,very_down);
     msleep(500);
     set_servo_position(CLAW,open);
     msleep(500);
     
+    
+    clear_motor_position_counter(0);
+    clear_motor_position_counter(3);
+    
     while (get_motor_position_counter(LEFT) < 6500) {
 		motor(LEFT, 73);
         motor(RIGHT, 75);
     }
-    ao();
     
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
@@ -172,16 +186,15 @@ int main()
 		motor(LEFT, 100);
         motor(RIGHT, -100);
     }
-    ao();
     
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     
-    while (get_motor_position_counter(RIGHT) > -850) {
+    while (get_motor_position_counter(RIGHT) > -1000) {
 		motor(LEFT, -100);
         motor(RIGHT, -100);
     }
-    ao();
+    
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     
@@ -189,12 +202,15 @@ int main()
 		motor(LEFT, -100);
         motor(RIGHT, 100);
     }
-    ao();
+    
+    clear_motor_position_counter(0);
+    clear_motor_position_counter(3);
     
     while (get_motor_position_counter(LEFT) < 850) {
 		motor(LEFT, 75);
         motor(RIGHT, 75);
     }
+    
     ao();
     
     set_servo_position(CLAW,closed);
@@ -207,6 +223,13 @@ int main()
 		motor(LEFT, 75);
         motor(RIGHT, -75);
     }
+    
+    clear_motor_position_counter(0);
+    clear_motor_position_counter(3);
+    
     ao();
+    
+    set_servo_position(CLAW,closed);
+    set_servo_position(ARM,up);
+    msleep(500);
 }
-
