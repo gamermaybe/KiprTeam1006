@@ -28,9 +28,9 @@ int main()
     clear_motor_position_counter(3);
     
     //backup and square up
-    while (get_motor_position_counter(LEFT) < 1200) {
-		motor(LEFT,40);
-        motor(RIGHT,-40);
+    while (get_motor_position_counter(LEFT) < 1300) {
+		motor(LEFT,100);
+        motor(RIGHT,-100);
     }
     ao();
     
@@ -42,18 +42,18 @@ int main()
     clear_motor_position_counter(3);
 
     //pivot right and knock down color squares
-    while(get_motor_position_counter(LEFT) > -2000) {
+    while(get_motor_position_counter(LEFT) > -2200) {
     	motor(LEFT,-100);
-        motor(RIGHT,-10);
+        motor(RIGHT,-20);
     }
    
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     
    //backup straight from boxes      
-    while (get_motor_position_counter(LEFT) < 1200) {
-		motor(LEFT,60);
-        motor(RIGHT,-40);
+    while (get_motor_position_counter(LEFT) < 1300) {
+		motor(LEFT,100);
+        motor(RIGHT,-100);
      }
    
     clear_motor_position_counter(0);
@@ -68,7 +68,7 @@ int main()
     clear_motor_position_counter(3);
     
     //pivot to face yellow boxes
-    while (get_motor_position_counter(LEFT) < 1000) {
+    while (get_motor_position_counter(LEFT) < 1600) {
 		motor(LEFT,98);
         motor(RIGHT,100);
     }
@@ -77,9 +77,9 @@ int main()
     clear_motor_position_counter(3);
     
     //backup and square up
-    while (get_motor_position_counter(LEFT) < 1000) {
-		motor(LEFT,40);
-        motor(RIGHT,-40);
+    while (get_motor_position_counter(LEFT) < 1600) {
+		motor(LEFT,100);
+        motor(RIGHT,-100);
     }
     
     clear_motor_position_counter(0);
@@ -106,7 +106,7 @@ int main()
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     // goes left
-    while (get_motor_position_counter(LEFT) > -1400) {
+    while (get_motor_position_counter(LEFT) > -2000) {
 		motor(LEFT,-40);
         motor(RIGHT,40);
     }
@@ -123,7 +123,7 @@ int main()
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     // goes back
-    while(get_motor_position_counter(LEFT) > -2000) { 
+    while(get_motor_position_counter(LEFT) > -2200) { 
     	motor(LEFT,-100);
         motor(RIGHT,-100);
     }
@@ -139,7 +139,7 @@ int main()
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     // goes left
-    while(get_motor_position_counter(RIGHT) < 10) {
+    while(get_motor_position_counter(RIGHT) < 100) {
     	motor(RIGHT, 75);
         motor(LEFT, -75);
     }
@@ -147,8 +147,8 @@ int main()
     clear_motor_position_counter(0);
     clear_motor_position_counter(3);
     // goes foward while slowly going left 
-    while(get_motor_position_counter(RIGHT) < 6000) {
-    	motor(RIGHT, 80);
+    while(get_motor_position_counter(RIGHT) < 6400) {
+    	motor(RIGHT, 74);
         motor(LEFT, 100);
     }
     
