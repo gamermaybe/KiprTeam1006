@@ -58,11 +58,11 @@ int main()
     clear_motor_position_counter(RIGHT);
     clear_motor_position_counter(LEFT);
     
-    //backup straight from boxes      
+    //backup straight from yellow boxes      
     while (get_motor_position_counter(LEFT) > -1300) {
 		motor(LEFT,FULL_BACKWARD);
         motor(RIGHT,FULL_BACKWARD);
-     }
+    }
    
     clear_motor_position_counter(RIGHT);
     clear_motor_position_counter(LEFT);
@@ -71,18 +71,16 @@ int main()
     set_servo_position(CLAW,open);
     msleep(500);
     
-    clear_motor_position_counter(RIGHT);
-    clear_motor_position_counter(LEFT);
-    
+    /*
     //pivot to face yellow boxes
     while (get_motor_position_counter(LEFT) < 1400) {
 		motor(LEFT,96);
         motor(RIGHT,FULL_FORWARD);
     }
-    
     clear_motor_position_counter(RIGHT);
     clear_motor_position_counter(LEFT);
-    
+    */
+
     //backup and square up
     while (get_motor_position_counter(LEFT) > -1600) {
 		motor(LEFT,FULL_BACKWARD);
