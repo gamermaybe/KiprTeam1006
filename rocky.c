@@ -1,5 +1,7 @@
 #include <kipr/wombat.h>
 
+// Rocky (AKA GRABBY)
+
 int ARM = 0;
 int CLAW = 1;
 int LEFT = 3;
